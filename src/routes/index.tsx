@@ -165,7 +165,6 @@ function Landing() {
               <div key={s.name} className="group rounded-2xl bg-card border border-border p-6 hover:shadow-[var(--shadow-soft)] hover:-translate-y-1 hover:border-primary/40 transition-all">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-lg font-bold">{s.name}</h3>
-                  <span className="shrink-0 rounded-full bg-[var(--pink-soft)] text-primary font-bold text-sm px-3 py-1">{s.price}</span>
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
                 <a
