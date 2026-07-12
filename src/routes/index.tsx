@@ -19,20 +19,18 @@ const IG_LINK = "https://www.instagram.com/nailartbyshir?igsh=MTFtZzh0d2wxdWZsZA
 const SALON = "הייזלר קוסמטיקה";
 
 const nailServices = [
-  { name: "מניקור בילדינג / חיזוק", price: "180 ₪", desc: "בסיס חזק לציפורניים טבעיות שנשברות" },
-  { name: "לק ג'ל קלאסי", price: "150 ₪", desc: "צבע אחיד עמיד עד 4 שבועות" },
-  { name: "מילוי לק ג'ל", price: "130 ₪", desc: "רענון וחידוש הבנייה הקיימת" },
-  { name: "עיצוב נייל ארט", price: "מ־20 ₪ לציפורן", desc: "פרנץ׳, ציורים, אבנים ואפקטים" },
-  { name: "הסרת לק ג'ל", price: "40 ₪", desc: "הסרה עדינה ללא פגיעה בציפורן" },
+  { name: "מילוי לק ג'ל", desc: "רענון וחידוש הבנייה הקיימת" },
+  { name: "הסרת לק ג'ל", desc: "הסרה עדינה ללא פגיעה בציפורן" },
 ];
 
 const browServices = [
-  { name: "עיצוב גבות בחוט + שעווה", price: "70 ₪", desc: "עיצוב מדויק לפי מבנה הפנים" },
-  { name: "צביעת גבות", price: "50 ₪", desc: "צבע טבעי ורך שמחמיא למבט" },
-  { name: "למינציה לגבות (Brow Lift)", price: "180 ₪", desc: "גבות מלאות, מסודרות ומורמות" },
-  { name: "הרמת ריסים (Lash Lift)", price: "220 ₪", desc: "ריסים ארוכים ומורמים ל־6–8 שבועות" },
-  { name: "צביעת ריסים", price: "60 ₪", desc: "מבט מודגש ללא מסקרה" },
+  { name: "עיצוב גבות בחוט + שעווה", desc: "עיצוב מדויק לפי מבנה הפנים" },
+  { name: "צביעת גבות", desc: "צבע טבעי ורך שמחמיא למבט" },
+  { name: "למינציה לגבות (Brow Lift)", desc: "גבות מלאות, מסודרות ומורמות" },
+  { name: "הרמת ריסים (Lash Lift)", desc: "ריסים ארוכים ומורמים ל־6–8 שבועות" },
+  { name: "צביעת ריסים", desc: "מבט מודגש ללא מסקרה" },
 ];
+
 
 function Landing() {
   const [tab, setTab] = useState<"nails" | "brows">("nails");
@@ -167,7 +165,6 @@ function Landing() {
               <div key={s.name} className="group rounded-2xl bg-card border border-border p-6 hover:shadow-[var(--shadow-soft)] hover:-translate-y-1 hover:border-primary/40 transition-all">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-lg font-bold">{s.name}</h3>
-                  <span className="shrink-0 rounded-full bg-[var(--pink-soft)] text-primary font-bold text-sm px-3 py-1">{s.price}</span>
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
                 <a
