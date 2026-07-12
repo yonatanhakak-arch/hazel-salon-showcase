@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles, ShieldCheck, Heart, Crown, MapPin, Phone, MessageCircle, Instagram, Facebook, Check, Star } from "lucide-react";
 import { useState } from "react";
-import nailsBlue from "@/assets/nails-blue.png.asset.json";
-import nailsFrench from "@/assets/nails-french.png.asset.json";
-import nailsBlack from "@/assets/nails-black.png.asset.json";
-import nailsZebra from "@/assets/nails-zebra.png.asset.json";
-import lashes from "@/assets/lashes.png.asset.json";
+const nailsBlue = { url: "/salon/nails-blue.png" };
+const nailsFrench = { url: "/salon/nails-french.png" };
+const nailsBlack = { url: "/salon/nails-black.png" };
+const nailsZebra = { url: "/salon/nails-zebra.png" };
+const lashes = { url: "/salon/lashes.png" };
 
 export const Route = createFileRoute("/")({
   component: Landing,
