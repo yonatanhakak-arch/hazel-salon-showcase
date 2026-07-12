@@ -157,7 +157,7 @@ function Landing() {
                 onClick={() => setTab("brows")}
                 className={`px-6 py-2.5 rounded-full text-sm font-bold transition ${tab === "brows" ? "bg-primary text-primary-foreground shadow-[var(--shadow-soft)]" : "text-muted-foreground hover:text-foreground"}`}
               >
-                עיצוב ושיקום גבות
+                הרמת ריסים וגבות
               </button>
             </div>
           </div>
