@@ -16,7 +16,7 @@ const WA_NUMBER = "972584939275";
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("היי, אשמח לקבוע תור 💅")}`;
 const FB_LINK = "https://www.facebook.com/share/1FgcYoQ2nz/?mibextid=wwXIfr";
 const IG_LINK = "https://www.instagram.com/nailartbyshir?igsh=MTFtZzh0d2wxdWZsZA==";
-const SALON = "הייזלר קוסמטיקה";
+const SALON = "הייזלר סלון קוסמטיקה";
 
 const nailServices = [
   { name: "מילוי לק ג'ל", desc: "רענון וחידוש הבנייה הקיימת" },
