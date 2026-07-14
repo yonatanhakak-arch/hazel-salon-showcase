@@ -82,7 +82,7 @@ function Landing() {
               </span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              ב־{SALON} תיהני מעבודה מדויקת, ציוד סטרילי ברמה רפואית ותוצאה בוטיק שנשארת שבועות. חוויה שקטה, נעימה ומפנקת — בדיוק כמו שמגיע לך.
+              {SALON} תיהני מעבודה מדויקת, ציוד סטרילי ברמה רפואית ותוצאה בוטיק שנשארת שבועות. חוויה שקטה, נעימה ומפנקת — בדיוק כמו שמגיע לך.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
