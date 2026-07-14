@@ -120,8 +120,28 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    const send = () => {
+      window.gtag?.("event", "page_view", {
+        page_path: router.state.location.pathname + router.state.location.search,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    };
+    send();
+    const unsub = router.subscribe("onResolved", send);
+    return () => unsub();
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -130,3 +150,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
