@@ -8,18 +8,10 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
-import ReactGA from "react-ga4";
 
+import { AnalyticsTracker } from "../components/AnalyticsTracker";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-
-const GA_MEASUREMENT_ID = "G-RS03YX9XWP";
-let gaInitialized = false;
-function ensureGAInitialized() {
-  if (typeof window === "undefined" || gaInitialized) return;
-  ReactGA.initialize(GA_MEASUREMENT_ID);
-  gaInitialized = true;
-}
 
 function NotFoundComponent() {
   return (
@@ -117,6 +109,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <AnalyticsTracker />
         {children}
         <Scripts />
       </body>
@@ -126,18 +119,6 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
-
-  useEffect(() => {
-    ensureGAInitialized();
-    const send = () => {
-      const path = router.state.location.pathname + router.state.location.search;
-      ReactGA.send({ hitType: "pageview", page: path, title: document.title });
-    };
-    send();
-    const unsub = router.subscribe("onResolved", send);
-    return () => unsub();
-  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
