@@ -91,7 +91,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" },
     ],
+    scripts: [
+      { src: "https://www.googletagmanager.com/gtag/js?id=G-RS03YX9XWP", async: true },
+      {
+        children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-RS03YX9XWP', { send_page_view: false });`,
+      },
+    ],
   }),
+
 
   shellComponent: RootShell,
   component: RootComponent,
@@ -113,8 +120,28 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    const send = () => {
+      window.gtag?.("event", "page_view", {
+        page_path: router.state.location.pathname + router.state.location.search,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    };
+    send();
+    const unsub = router.subscribe("onResolved", send);
+    return () => unsub();
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -123,3 +150,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
