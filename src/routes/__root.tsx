@@ -84,6 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "מניקור, לק ג'ל, גבות וריסים ברמה בוטיק. הוד השרון." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#faa5db" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
