@@ -40,9 +40,11 @@ function Landing() {
       <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
         <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between gap-4">
           <a href="#top" className="flex items-center gap-2 min-w-0">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
-              <Sparkles className="h-4 w-4" />
-            </span>
+            <img
+              src="/apple-touch-icon.png"
+              alt={SALON}
+              className="h-9 w-9 shrink-0 rounded-full object-cover"
+            />
             <span className="truncate font-display font-extrabold text-lg tracking-tight">{SALON}</span>
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
