@@ -43,7 +43,8 @@ function Landing() {
             <img
               src="/apple-touch-icon.png"
               alt={SALON}
-              className="h-9 w-9 shrink-0 rounded-full object-cover"
+              className="site-logo shrink-0 rounded-full object-cover"
+              data-image-slot="Site Logo"
             />
             <span className="truncate font-display font-extrabold text-lg tracking-tight">{SALON}</span>
           </a>
