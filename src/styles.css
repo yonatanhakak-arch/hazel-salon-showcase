@@ -65,3 +65,12 @@
     direction: rtl;
   }
 }
+
+.site-logo {
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
