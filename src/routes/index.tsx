@@ -274,9 +274,12 @@ function Landing() {
       <footer className="border-t border-border py-10">
         <div className="mx-auto max-w-6xl px-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] items-center">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
-              <Sparkles className="h-4 w-4" />
-            </span>
+            <img
+              src="/apple-touch-icon.png"
+              alt={SALON}
+              className="site-logo shrink-0 rounded-full object-cover"
+              data-image-slot="Site Logo"
+            />
             <span className="font-display font-extrabold truncate">{SALON}</span>
             <span className="text-muted-foreground text-sm mr-2">· הוד השרון</span>
           </div>
