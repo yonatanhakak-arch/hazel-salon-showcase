@@ -7,8 +7,64 @@ const nailsBlack = { url: "/salon/nails-black.png" };
 const nailsZebra = { url: "/salon/nails-zebra.png" };
 const lashes = { url: "/salon/lashes.png" };
 
+const SITE_TITLE = "הייזלר סלון קוסמטיקה | מניקור, לק ג'ל, ריסים וגבות בהוד השרון";
+const SITE_DESC = "סטודיו בוטיק פרימיום בהוד השרון למניקור, לק ג'ל, למינציה לגבות והרמת ריסים. עבודה מדויקת, ציוד סטרילי ותוצאה שנשארת. קבעי תור בוואטסאפ.";
+const OG_IMAGE = "/salon/nails-blue.png";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  name: "הייזלר סלון קוסמטיקה",
+  image: [OG_IMAGE],
+  description: SITE_DESC,
+  telephone: "+972-58-493-9275",
+  priceRange: "₪₪",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "הוד השרון",
+    addressCountry: "IL",
+  },
+  areaServed: "הוד השרון",
+  sameAs: [
+    "https://www.facebook.com/share/1FgcYoQ2nz/?mibextid=wwXIfr",
+    "https://www.instagram.com/nailartbyshir?igsh=MTFtZzh0d2wxdWZsZA==",
+  ],
+  makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "מניקור ולק ג'ל" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "למינציה לגבות" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "הרמת ריסים" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "צביעת ריסים" } },
+  ],
+};
+
 export const Route = createFileRoute("/")({
   component: Landing,
+  head: () => ({
+    meta: [
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESC },
+      { name: "keywords", content: "מניקור, לק ג'ל, למינציה לגבות, הרמת ריסים, צביעת ריסים, קוסמטיקה, הוד השרון, סלון יופי" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESC },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "he_IL" },
+      { property: "og:site_name", content: "הייזלר סלון קוסמטיקה" },
+      { property: "og:url", content: "/" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESC },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(structuredData),
+      },
+    ],
+  }),
 });
 
 const PHONE = "+972584939275";
