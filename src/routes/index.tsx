@@ -328,15 +328,16 @@ function Landing() {
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-bold shadow-[var(--shadow-soft)] hover:opacity-90 transition">
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer" onClick={() => trackClick("whatsapp_click", "WhatsApp Button")} className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-bold shadow-[var(--shadow-soft)] hover:opacity-90 transition">
                     <MessageCircle className="h-4 w-4" /> וואטסאפ
                   </a>
-                  <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-bold hover:bg-secondary transition">
+                  <a href={IG_LINK} target="_blank" rel="noopener noreferrer" onClick={() => trackClick("instagram_click", "Instagram Button")} className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-bold hover:bg-secondary transition">
                     <Instagram className="h-4 w-4" /> אינסטגרם
                   </a>
                   <a href={FB_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-bold hover:bg-secondary transition">
                     <Facebook className="h-4 w-4" /> פייסבוק
                   </a>
+
                 </div>
               </div>
 
