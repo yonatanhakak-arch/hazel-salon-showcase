@@ -245,10 +245,12 @@ function Landing() {
                   href={WA_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackClick("whatsapp_click", "WhatsApp Button")}
                   className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition"
                 >
                   לקביעת תור ←
                 </a>
+
               </div>
             ))}
           </div>
