@@ -163,11 +163,13 @@ function Landing() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackClick("whatsapp_click", "WhatsApp Button")}
                 className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 text-base font-bold shadow-[var(--shadow-glow)] hover:scale-[1.02] active:scale-100 transition"
               >
                 <MessageCircle className="h-5 w-5" />
                 לקביעת תור מהיר בוואטסאפ
               </a>
+
               <a
                 href="#services"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-base font-semibold hover:bg-secondary transition"
