@@ -74,6 +74,19 @@ const FB_LINK = "https://www.facebook.com/share/1FgcYoQ2nz/?mibextid=wwXIfr";
 const IG_LINK = "https://www.instagram.com/nailartbyshir?igsh=MTFtZzh0d2wxdWZsZA==";
 const SALON = "הייזלר סלון קוסמטיקה";
 
+const trackClick = (eventName: string, label: string) => {
+  if (typeof window !== "undefined") {
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag === "function") {
+      gtag("event", eventName, {
+        event_category: "engagement",
+        event_label: label,
+      });
+    }
+  }
+};
+
+
 const nailServices = [
   { name: "מילוי לק ג'ל", desc: "רענון וחידוש הבנייה הקיימת" },
   { name: "הסרת לק ג'ל", desc: "הסרה עדינה ללא פגיעה בציפורן" },
