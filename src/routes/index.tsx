@@ -410,7 +410,19 @@ function Advantage({ icon, title, desc, image, imageLabel }: { icon: React.React
   );
 }
 
-function ContactRow({ icon, label, value, href }: { icon: React.ReactNode; label: string; value: string; href?: string }) {
+function ContactRow({ icon, label, value, href, onClick }: { icon: React.ReactNode; label: string; value: string; href?: string; onClick?: () => void }) {
+  const content = (
+    <div className="flex items-center gap-4">
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white border border-border text-primary">{icon}</div>
+      <div className="min-w-0">
+        <div className="text-xs text-muted-foreground">{label}</div>
+        <div className="font-bold truncate">{value}</div>
+      </div>
+    </div>
+  );
+  return href ? <a href={href} onClick={onClick} className="block hover:opacity-80 transition">{content}</a> : content;
+}
+
   const content = (
     <div className="flex items-center gap-4">
       <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white border border-border text-primary">{icon}</div>
