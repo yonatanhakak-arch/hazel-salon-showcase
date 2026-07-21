@@ -74,6 +74,19 @@ const FB_LINK = "https://www.facebook.com/share/1FgcYoQ2nz/?mibextid=wwXIfr";
 const IG_LINK = "https://www.instagram.com/nailartbyshir?igsh=MTFtZzh0d2wxdWZsZA==";
 const SALON = "הייזלר סלון קוסמטיקה";
 
+const trackClick = (eventName: string, label: string) => {
+  if (typeof window !== "undefined") {
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag === "function") {
+      gtag("event", eventName, {
+        event_category: "engagement",
+        event_label: label,
+      });
+    }
+  }
+};
+
+
 const nailServices = [
   { name: "מילוי לק ג'ל", desc: "רענון וחידוש הבנייה הקיימת" },
   { name: "הסרת לק ג'ל", desc: "הסרה עדינה ללא פגיעה בציפורן" },
@@ -114,11 +127,13 @@ function Landing() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackClick("whatsapp_click", "WhatsApp Button")}
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold shadow-[var(--shadow-soft)] hover:opacity-90 transition"
           >
             <MessageCircle className="h-4 w-4" />
             קביעת תור
           </a>
+
         </div>
       </header>
 
@@ -148,11 +163,13 @@ function Landing() {
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackClick("whatsapp_click", "WhatsApp Button")}
                 className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 text-base font-bold shadow-[var(--shadow-glow)] hover:scale-[1.02] active:scale-100 transition"
               >
                 <MessageCircle className="h-5 w-5" />
                 לקביעת תור מהיר בוואטסאפ
               </a>
+
               <a
                 href="#services"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-base font-semibold hover:bg-secondary transition"
@@ -228,10 +245,12 @@ function Landing() {
                   href={WA_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackClick("whatsapp_click", "WhatsApp Button")}
                   className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition"
                 >
                   לקביעת תור ←
                 </a>
+
               </div>
             ))}
           </div>
@@ -304,19 +323,21 @@ function Landing() {
 
                 <div className="mt-8 space-y-4">
                   <ContactRow icon={<MapPin className="h-5 w-5" />} label="מיקום" value="הוד השרון" />
-                  <ContactRow icon={<Phone className="h-5 w-5" />} label="טלפון" value="058-493-9275" href={`tel:${PHONE}`} />
+                  <ContactRow icon={<Phone className="h-5 w-5" />} label="טלפון" value="058-493-9275" href={`tel:${PHONE}`} onClick={() => trackClick("phone_click", "Phone Call Button")} />
+
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-bold shadow-[var(--shadow-soft)] hover:opacity-90 transition">
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer" onClick={() => trackClick("whatsapp_click", "WhatsApp Button")} className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-bold shadow-[var(--shadow-soft)] hover:opacity-90 transition">
                     <MessageCircle className="h-4 w-4" /> וואטסאפ
                   </a>
-                  <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-bold hover:bg-secondary transition">
+                  <a href={IG_LINK} target="_blank" rel="noopener noreferrer" onClick={() => trackClick("instagram_click", "Instagram Button")} className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-bold hover:bg-secondary transition">
                     <Instagram className="h-4 w-4" /> אינסטגרם
                   </a>
                   <a href={FB_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-bold hover:bg-secondary transition">
                     <Facebook className="h-4 w-4" /> פייסבוק
                   </a>
+
                 </div>
               </div>
 
@@ -389,7 +410,7 @@ function Advantage({ icon, title, desc, image, imageLabel }: { icon: React.React
   );
 }
 
-function ContactRow({ icon, label, value, href }: { icon: React.ReactNode; label: string; value: string; href?: string }) {
+function ContactRow({ icon, label, value, href, onClick }: { icon: React.ReactNode; label: string; value: string; href?: string; onClick?: () => void }) {
   const content = (
     <div className="flex items-center gap-4">
       <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white border border-border text-primary">{icon}</div>
@@ -399,8 +420,10 @@ function ContactRow({ icon, label, value, href }: { icon: React.ReactNode; label
       </div>
     </div>
   );
-  return href ? <a href={href} className="block hover:opacity-80 transition">{content}</a> : content;
+  return href ? <a href={href} onClick={onClick} className="block hover:opacity-80 transition">{content}</a> : content;
 }
+
+
 
 function CallbackForm() {
   const [name, setName] = useState("");
