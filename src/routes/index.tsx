@@ -323,7 +323,8 @@ function Landing() {
 
                 <div className="mt-8 space-y-4">
                   <ContactRow icon={<MapPin className="h-5 w-5" />} label="מיקום" value="הוד השרון" />
-                  <ContactRow icon={<Phone className="h-5 w-5" />} label="טלפון" value="058-493-9275" href={`tel:${PHONE}`} />
+                  <ContactRow icon={<Phone className="h-5 w-5" />} label="טלפון" value="058-493-9275" href={`tel:${PHONE}`} onClick={() => trackClick("phone_click", "Phone Call Button")} />
+
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-3">
