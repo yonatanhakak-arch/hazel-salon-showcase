@@ -127,11 +127,13 @@ function Landing() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackClick("whatsapp_click", "WhatsApp Button")}
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold shadow-[var(--shadow-soft)] hover:opacity-90 transition"
           >
             <MessageCircle className="h-4 w-4" />
             קביעת תור
           </a>
+
         </div>
       </header>
 
